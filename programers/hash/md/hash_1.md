@@ -69,4 +69,29 @@ def solution(participant, completion):
 ### 결과
 <img src="./../images/hash_1_1.png" width="50%">
 
+### 다른 사람들의 풀이
+hash 값을 사용해 누적합을 구하고 계속 차감해 나간뒤 최종 값(특정 사용자의 hash값)을 사용해 해를 구하는 방식이 신기했다
+
+#### participant(출전선수 목록)
+- hash 값은 unique 하기 때문에 hash값을 dict의 key로 사용한다
+- hash 값을 "temp" 변수에 누적합을 구하여 저장한다
+
+#### completion(완료선수 목록)
+- 완료선수명에 대한 hash값을 구해서 "temp" 변수에서 계속 차감해 나간다
+- 모두 차감하고 나면 "temp" 변수에는 어떠한 숫자값이 있을 것이며, 
+  그 숫자값을 Key로 사용하는 value를 dict에서 찾으면 그 value가 완료하지 못한 선수이다.
+```python
+def solution(participant, completion):
+    answer = ''
+    temp = 0
+    dic = {}
+    for part in participant:
+        dic[hash(part)] = part
+        temp += int(hash(part))
+    for com in completion:
+        temp -= hash(com)
+    answer = dic[temp]
+
+    return answer
+```
  

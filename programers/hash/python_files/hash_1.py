@@ -32,24 +32,30 @@ def solution(participant, completion):
 
     completion_len = len(completion)
 
-    r_d = {}
+    completion_dict = {}
 
-    completion.append("-")
+    for v in range(completion_len):
+        participant_value = participant[v]
+        completion_value = completion[v]
 
-    for p, c in zip(participant, completion):
-
-        if r_d.get(p):
-            del r_d[p]
+        if completion_dict.get(participant_value):
+            del completion_dict[participant_value]
         else:
-            r_d[p] = 1
+            completion_dict[participant_value] = 1
 
-        if r_d.get(c):
-            del r_d[c]
+        if completion_dict.get(completion_value):
+            del completion_dict[completion_value]
         else:
-            r_d[c] = 1
+            completion_dict[completion_value] = 1
 
+    participant_value = participant[completion_len]
+    if completion_dict.get(participant_value):
+        del completion_dict[participant_value]
+    else:
+        completion_dict[participant_value] = 1
 
-    return list(r_d.keys())[0]
+    return list(completion_dict.keys())[0]
+
 
 result1 = solution(["marina", "josipa", "nikola", "vinko", "filipa"], ["josipa", "filipa", "marina", "nikola"])
 result2 = solution(["mislav", "stanko", "mislav", "ana"], ["stanko", "ana", "mislav"])
