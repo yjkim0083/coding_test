@@ -68,9 +68,18 @@ def solution(phone_book):
 <img src="./../images/hash_2_1.png" width="50%">
 
 ### 다른 사람들의 풀이
-..
 
 ```python
-source...
+def solution(phone_book):
+    hash_map = {}
+    for phone_number in phone_book:
+        hash_map[phone_number] = 1
+    for phone_number in phone_book:
+        temp = ""
+        for number in phone_number:
+            temp += number
+            if temp in hash_map and temp != phone_number:
+                return False
+    return True
 ```
  
