@@ -69,6 +69,9 @@ def solution(phone_book):
 
 ### 다른 사람들의 풀이
 
+- 보통 작은것을 기준으로 큰쪽에서 찾게되는데, 이분의 풀이는 큰쪽에서 작은걸 찾는 방법이었음
+- :+1: 발상의 전환을 알게해준 풀이
+
 ```python
 def solution(phone_book):
     hash_map = {}
