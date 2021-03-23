@@ -25,8 +25,9 @@ return 하도록 solution 함수를 작성해주세요.
 
 ### 입출력 예
 
-array	                commands	                        return
-[1, 5, 2, 6, 3, 7, 4]	[[2, 5, 3], [4, 4, 1], [1, 7, 3]]   [5, 6, 3]
+|array|commands|return|
+|------|---|---|
+|[1, 5, 2, 6, 3, 7, 4]|[[2, 5, 3], [4, 4, 1], [1, 7, 3]]|[5, 6, 3]|
 
 
 ## 입출력 예 설명
@@ -52,4 +53,4 @@ def solution(array, commands):
 - 프로그래머스에서 풀었던 가장 쉬운 문제
 
 ### 결과
-<img src="./../images/sort_1.png" width="50%">
+<img src="./../images/sort_1.PNG" width="50%">
