@@ -17,26 +17,87 @@ numbers	return
 [6, 10, 2]	"6210"
 [3, 30, 34, 5, 9]	"9534330"
 """
+
+
+
+# def solution(numbers):
+#     answer = ''
+#
+#     check_num = 9
+#
+#     while check_num >= 0:
+#         checked_idx_dict = {idx: number for idx, number in enumerate(numbers) if str(number)[0:1] == str(check_num)}
+#
+#         if checked_idx_dict:
+#             if len(checked_idx_dict) == 1:
+#                 k, v = checked_idx_dict.popitem()
+#                 answer += str(v)
+#                 numbers.pop(k)
+#             else:
+#                 transformed_checked_idx_dict = {}
+#                 max_value_length = len(str(max(list(checked_idx_dict.values()))))
+#                 for k, v in checked_idx_dict.items():
+#                     if max_value_length - len(str(v)) != 0:
+#                         v = str(v) + str(check_num) * (max_value_length - len(str(v)))
+#                         transformed_checked_idx_dict[k] = int(v)
+#                     else:
+#                         transformed_checked_idx_dict[k] = v
+#
+#                 print(checked_idx_dict)
+#                 print(transformed_checked_idx_dict)
+#
+#                 transformed_checked_idx_dict = sorted(transformed_checked_idx_dict.items(), key=(lambda x: x[1]), reverse=True)
+#
+#                 for _idx, k_v in enumerate(transformed_checked_idx_dict):
+#                     answer += str(checked_idx_dict[k_v[0]])
+#
+#         check_num -= 1
+#
+#     if answer.startswith("0"):
+#         answer = "0"
+#
+#     return answer
+
+
+
 def solution(numbers):
-    answer = ''
-
-    check_num = 9
-
-    while check_num >= 0:
-        checked_idx_list = [idx for idx, number in enumerate(numbers) if str(number)[0:1] == check_num]
-
-        if checked_idx_list:
-            pop_list = []
-            for idx in checked_idx_list:
-                pop_list.append(numbers.pop(idx))
+    numbers = list(map(str, numbers))
+    numbers.sort(key=lambda x: x*3, reverse=True)
+    return str(int(''.join(numbers)))
 
 
+from functools import cmp_to_key
+
+def solution2(numbers):
+    numbers = list(map(lambda x: str(x), numbers))
+    numbers = sorted(numbers, key=cmp_to_key(lambda a, b: -1 if a+b >= b+a else 1))
+    answer = ''.join(numbers)
+
+    return str(int(answer))
 
 
-        check_num -= 1
+# print(solution([3, 30, 34, 5, 9]))
+# print(solution([0, 5, 10, 15, 20]))
+# print(solution([1000, 0, 5, 99, 100]))
+# print(solution([0, 0, 0, 0, 0]))
+print(solution([40, 404]))
+print(solution2([40, 404]))
 
 
-    return answer
+# numbers : [0, 5, 10, 15, 20]
+# return : "52015100"
+#
+# numbers : [1000, 0, 5, 99, 100]
+# return : "99510010000"
+#
+# numbers : [0, 0, 0, 0, 0]
+# return : "0"
 
 
-print(solution([6, 10, 2]))
+
+# def solution(numbers):
+#     n = len(str(max(numbers)))#숫자의 최대 자릿수 확인
+#     vin = [(int(str(x)+str(x)[0]*(n-len(str(x)))),str(x)) for x in numbers] #자릿수 통일해서 만들어줌
+#     ans= [b for (a,b) in sorted(vin,reverse=True)]
+#     answer = ''.join(ans)
+#     return str(int(answer))
