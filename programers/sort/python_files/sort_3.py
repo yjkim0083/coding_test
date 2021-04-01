@@ -27,29 +27,22 @@ citations	    return
 아래 링크를 읽어볼것!
 https://www.ibric.org/myboard/read.php?Board=news&id=270333
 """
-import math
+
 
 def solution(citations):
-    citations = [citation for citation in citations if citation > 0]
-    if not citations:
-        return 0
-    if len(citations) == 1:
-        return citations[0]
+
+    h = 0
 
     citations.sort()
 
-    _total = 0
-    _checked_citation = 0
-    for idx, citation in enumerate(citations):
-        if _total <= citation <= len(citations[idx:]):
-            _checked_citation = citation
-        else:
+    for idx in range(len(citations)):
+        h_index = [citation for citation in citations if citation >= h]
+        if len(h_index) >= h and h < max(h_index):
+            h += 1
+        if len(h_index) < h:
+            h -= 1
             break
-
-        _total += citation
-
-    return _checked_citation
-
+    return h
 
 
 

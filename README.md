@@ -21,6 +21,7 @@ programers : https://programmers.co.kr/learn/challenges
 #### Sort
 - (성공) [K번째 수](https://github.com/yjkim0083/coding_test/blob/main/programers/Sort/md/sort_1.md)
 - (실패) [가장 큰 수](https://github.com/yjkim0083/coding_test/blob/main/programers/Sort/md/sort_2.md)
+- (성공) [H-index](https://github.com/yjkim0083/coding_test/blob/main/programers/Sort/md/sort_3.md)
 ---
 #### 완전탐색
 ---
