@@ -54,5 +54,5 @@ def solution(numbers):
 - 아직도 완벽히 이해가 안됨;
 
 ### 결과
-<img src="./../images/sort_3.PNG" width="50%">
+<img src="./../images/sort_3.png" width="50%">
 
