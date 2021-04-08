@@ -32,6 +32,90 @@ numbers	            target	return
 문제에 나온 예와 같습니다.
 """
 
+import collections
+
+
 def solution(numbers, target):
     answer = 0
+    stack = collections.deque([(0, 0)])
+
+    _idx = 0
+    while stack:
+        print(f"idx: [{_idx}]   answer: {answer},   stack:{stack}")
+        current_sum, num_idx = stack.popleft()
+
+        if num_idx == len(numbers):
+            if current_sum == target:
+                answer += 1
+        else:
+            number = numbers[num_idx]
+            stack.append((current_sum + number, num_idx + 1))
+            stack.append((current_sum - number, num_idx + 1))
+
+        _idx += 1
+
     return answer
+
+
+print(solution([1, 2, 3], 4))
+
+# graph = {
+#     'A': ['B'],
+#     'B': ['A', 'C', 'H'],
+#     'C': ['B', 'D'],
+#     'D': ['C', 'E', 'G'],
+#     'E': ['D', 'F'],
+#     'F': ['E'],
+#     'G': ['D'],
+#     'H': ['B', 'I', 'J', 'M'],
+#     'I': ['H'],
+#     'J': ['H', 'K'],
+#     'K': ['J', 'L'],
+#     'L': ['K'],
+#     'M': ['H']
+# }
+#
+# def bfs(graph, start_node):
+#     visit = list()
+#     queue = list()
+#
+#     queue.append(start_node)
+#
+#     while queue:
+#         node = queue.pop(0)
+#         if node not in visit:
+#             visit.append(node)
+#             queue.extend(graph[node])
+#
+#     return visit
+#
+# def bfs2(graph, start_node):
+#     visit = {}
+#     queue = list()
+#
+#     queue.append(start_node)
+#
+#     while queue:
+#         node = queue.pop(0)
+#         if node not in visit:
+#             visit[node] = True
+#             queue.extend(graph[node])
+#
+#     return list(visit.keys())
+#
+# def dfs(graph, start_node):
+#     visit = list()
+#     stack = list()
+#
+#     stack.append(start_node)
+#
+#     while stack:
+#         node = stack.pop()
+#         if node not in visit:
+#             visit.append(node)
+#             stack.extend(graph[node])
+#
+#     return visit
+#
+# #print(bfs2(graph, 'A'))
+# #print(dfs(graph, 'A'))
